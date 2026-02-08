@@ -2,122 +2,132 @@
 #include <vector>
 #include <cmath>
 #include <string>
-#include <iomanip>
 using namespace std;
 
 int main() {
-    // checking prime
-    // int prime;
-    // cin >> prime;
 
-    // bool is_prime = true;
-    // if (prime <21){
-    //     is_prime = false;
-    //     return 0;
-    // }else{
-    //     for (int i = 2 ; i <= sqrt(prime); ++i){
-    //         if (prime % i == 0){
-    //             is_prime = false;
-    //             break;
-    //         }
-    //     }
-    // }
+    // ---------------- PRIME CHECK (Single Number) ----------------
+    /*
+    int prime;
+    cin >> prime;
 
-    // if (is_prime) {
-    //     cout << "Prime" << endl;
-    // } else {
-    //     cout << "Not prime" << endl;
-    // }
+    bool is_prime = true;
 
-
-    //Print All Primes up to N
-    // int num;
-    // cin >> num;
-
-    // vector<int> nums;
-
-    // if (num < 2) {
-    //     cout << 1 << endl;
-    // } else {
-    //     for (int i = 2; i <= num; ++i) {
-    //         bool isPrime = true;
-    //         for (int j = 2; j < i; ++j) { 
-    //             if (i % j == 0) {
-    //                 isPrime = false;
-    //                 break;
-    //             }
-    //         }
-    //         if (isPrime) {
-    //             nums.push_back(i); 
-    //         }
-    //     }
-    // }
-
-    // Print primes
-    // for (int p : nums) {
-    //     cout << p << " ";
-    // }
-    // cout << endl;
-
-    //-------------------Perfect Number
-    int perfectNum;
-    int sum = 0;
-    cin >> perfectNum;
-
-    for (int i = 1 ; i < perfectNum; i++){
-        if (perfectNum % i == 0){
-            sum += i;
+    if (prime <= 1) {
+        is_prime = false;
+    } else {
+        for (int i = 2; i <= sqrt(prime); i++) {
+            if (prime % i == 0) {
+                is_prime = false;
+                break;
+            }
         }
     }
-    if (sum == perfectNum){
-        cout << "You entered prefect number" << endl;
-    }else {
-        cout << "Not a perfect number" << endl;
+
+    if (is_prime)
+        cout << "Prime\n";
+    else
+        cout << "Not Prime\n";
+    */
+
+    // ---------------- PRINT PRIMES UP TO N ----------------
+    /*
+    int num;
+    cin >> num;
+    vector<int> nums;
+
+    for (int i = 2; i <= num; i++) {
+        bool isPrime = true;
+        for (int j = 2; j < i; j++) {
+            if (i % j == 0) {
+                isPrime = false;
+                break;
+            }
+        }
+        if (isPrime)
+            nums.push_back(i);
     }
 
-    // Count Digits in a Number
+    for (int p : nums)
+        cout << p << " ";
+    cout << endl;
+    */
+
+    // ---------------- PERFECT NUMBER ----------------
+    int perfectNum;
+    cin >> perfectNum;
+
+    int sum = 0;
+    for (int i = 1; i < perfectNum; i++) {
+        if (perfectNum % i == 0)
+            sum += i;
+    }
+
+    if (sum == perfectNum)
+        cout << "Perfect number\n";
+    else
+        cout << "Not a perfect number\n";
+
+    // ---------------- COUNT DIGITS + PALINDROME ----------------
     int num1 = 1234;
-    string  reversed = "";
+    string str = to_string(num1);
+    string reversed = "";
     int count = 0;
-    string str= to_string(num1);
-    for (char c : str){
-        count += 1;
+
+    for (char c : str) {
+        count++;
         reversed = c + reversed;
     }
-    if (reversed == str){
-        cout << "given one is a palindrome"<< endl;
-    }else{
-        cout << "Not a palindrome"<< endl;
-    }
 
-    cout << "Number of digits: " << count << endl;
-    cout << "reversed digits : " << reversed << endl;
+    if (reversed == str)
+        cout << "Palindrome\n";
+    else
+        cout << "Not Palindrome\n";
 
-    // Armstrong Number
-    int armstrongnum = 153;
+    cout << "Digits: " << count << endl;
+    cout << "Reversed: " << reversed << endl;
+
+    // ---------------- ARMSTRONG NUMBER ----------------
+    int armstrongNum = 153;
     int add = 0;
-    string armstring = to_string(armstrongnum);
+    string armStr = to_string(armstrongNum);
 
-    for(char c : armstring){
-        add += pow((c - '0'), 3);
-    }
+    for (char c : armStr)
+        add += pow(c - '0', 3);
 
-    if(add == armstrongnum){
-        cout << "armstrong number" << endl;
-    }else{
-        cout << "not an armstrong number" << endl;
-    }
+    if (add == armstrongNum)
+        cout << "Armstrong\n";
+    else
+        cout << "Not Armstrong\n";
 
-    // Print Fibonacci Series up to N
-    int a= 0;
-    int b = 1;
-    int n = 5;
-    for (int i = 0 ; i < n; i++){
-        cout << a << " " << b << " " << endl;
+    // ---------------- FIBONACCI ----------------
+    int a = 0, b = 1, fibN = 5;
+
+    for (int i = 0; i < fibN; i++) {
+        cout << a << " ";
+        int next = a + b;
         a = b;
-        b = b+1;
+        b = next;
     }
+    cout << endl;
+
+    // ---------------- FLAG: ALL DIGITS EVEN ----------------
+    int num = 2486;
+    bool allEven = true;
+
+    while (num > 0) {
+        int digit = num % 10;
+        if (digit % 2 != 0) {
+            allEven = false;
+            break;
+        }
+        num /= 10;
+    }
+
+    if (allEven)
+        cout << "All digits even\n";
+    else
+        cout << "Not all digits even\n";
 
     return 0;
-
 }
